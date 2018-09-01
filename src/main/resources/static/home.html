@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+  <base href="./">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script type="text/javascript" src="jquery.cookie.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+
+  <!-- vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- 推荐使用：axios HTTP Client 网络通信的函数库 -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Champion_Go</title>
+		
+
+		<style>
+	
+			
+			
+		footer {
+      		bottom: 0;
+      		padding: 2em 0;
+      		text-align: center;
+      		background-color: #69c;
+      		color: #fff;
+      		width: 100%;
+      		clear: both;
+    	}
+		</style>
+</head>
+
+<body>
+	<header>
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark .navbar-inverse">
+				<a class="navbar-brand" href="#">Champion_Go</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+		
+		
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">首页
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="http://localhost:8080/search.html">全部分类
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="http://localhost:8080/order.html">购物车
+							</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" onclick="user()" >个人中心
+							</a>
+						</li>
+						
+					</ul>
+					<button id="login" onclick="login()" type="button" class="btn btn-success mx-3">登陆</button>
+					<button id="register" onclick="register()" type="button" class="btn btn-primary mx-3">注册</button>
+				</div>
+			</nav>
+	</header>
+
+	<main>
+		<section>
+
+			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="d-block w-100" src="./img/5b6cf10eNf0323b3e.jpg" alt="First slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" src="./img/5b61add4N858f88a1.jpg" alt="Second slide">
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" src="./img/5b61add4Ndf76b675.jpg" alt="Third slide">
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</section>
+		<section>
+			<div class="container">
+				<div>
+					<img src="./img/5b7a95d5Ne9f0046f.jpg" alt="">
+				</div>
+				<div>
+					<img src="./img/download.jpg" alt="">
+				</div>
+				<div>
+					<img src="./img/5b6cf494Nce818f3f.jpg" alt="">
+				</div>
+				<div class="">
+					<img data-src="" src="./img/5b6cf4aaN23e4ca5f.jpg">
+				</div>
+			</div>
+		</section>
+
+
+			<span>¥</span>
+	</main>
+	<footer>Copyright (c) 2018 404NOTFounD All Rights Reserved.</footer>
+
+
+
+
+
+
+	<script>
+	  $.cookie("user", "null");
+
+		//判断登陆cookie以及注册cookie
+	  if ((typeof ($.cookie("login_id")) != "undefined" && ($.cookie("login_id")) != "null" && ($.cookie("login_id") != null)) ||
+	    (typeof ($.cookie("register_id")) != "undefined" && ($.cookie("register_id") != "null"))) {
+	    let id;
+	    if (typeof ($.cookie("login_id")) != "undefined" && ($.cookie("login_id")) != "null" && ($.cookie("login_id") != null)) {
+				id = $.cookie("login_id");
+	      console.log(id);
+	    } else {
+				id = $.cookie("register_id");
+				// console.log(id);
+	    }
+
+	    axios.post('/user', {
+	        'user_id': id
+	      })
+	      .then((r) => {
+					//dom已经加载，图片之类的加载完成执行ready
+	        	$(document).ready(function () {
+							console.log(r.data.user_name);
+	          	$.cookie("user", r.data.user_name);
+	          	$("#login").text("您好:" + r.data.user_name);
+							console.log("here");
+	          	$("#register").text("退出");
+	          	$("#register").click(function () {
+	            exit();
+	          })
+	        })
+	      })
+	  }
+		
+		
+  function login() {
+    let temp = $.cookie("login_id");
+    let temp3 = $.cookie("register_id");
+    if ((typeof (temp) == "undefined" || temp == "null" || temp == null) &&
+      (typeof (temp3) == "undefined" || temp3 == "null" || temp3 == null)) {
+
+      window.location.href = "http://localhost:8080/login.html";
+    }
+  }
+
+
+  function register() {
+    let tem1 = $.cookie("login_id");
+    let tem2 = $.cookie("register_id");
+    if ((typeof (tem1) == "undefined" || tem1 == "null" || tem1 == null) &&
+      (typeof (tem2) == "undefined" || tem2 == "null" || tem2 == null)) {
+      window.location.href = "http://localhost:8080/register.html";
+    }
+  }
+
+  function exit() {
+    {
+      $("#register").text("注册");
+      $("#login").text("登录");
+      $.cookie("login_id", "null");
+      $.cookie("register_id", "null");
+      $.cookie("user_id", "null");
+    }
+
+  }
+
+  //个人中心
+  function user() {
+    let user_id;
+    if ($.cookie("login_id") != "null" && typeof ($.cookie("login_id")) != "undefined") {
+      user_id = $.cookie("login_id");
+    }
+    if ($.cookie("register_id") != "null" && typeof ($.cookie("register_id")) != "undefined") {
+      user_id = $.cookie("register_id");
+    }
+    //console.log("user_id");//测试能否取到
+    if (typeof (user_id) != "undefined" && user_id != "null") {
+      $.cookie("user_id", user_id);
+      window.location = 'http://localhost:8080/user.html';
+    } else {
+      alert("请先登录或注册");
+    }
+
+
+  }
+  </script>
+  
+</body>
+
+</html>

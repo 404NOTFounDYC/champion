@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<base href="./">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="jquery.cookie.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
+
+<!-- vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 推荐使用：axios HTTP Client 网络通信的函数库 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+	<style>
+		/* body {
+	background: url("./img/home.jpg") no-repeat;
+	background-size: 100%;
+} */
+
+.tag-span2 {
+	vertical-align: middle !important;
+	font-weight: bolder;
+	width: 100px;
+}
+
+.table {
+	background: transparent;
+	border-spacing: 2px;
+}
+
+.tags .tag {
+	display: inline-block;
+	padding-top: 5px;
+	padding-right: 20px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	border-radius: 2px;
+	color: #888;
+	line-height: 1;
+	font-size: 12px;
+	background-color: #E6E6E6;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+.tags .tag.active {
+	color: white;
+	background-color: red
+}
+
+body {
+	background-color: rgb(245, 245, 245);
+	word-wrap: break-word;
+}
+
+td, th {
+	display: table-ceil;
+	border-collapse: inherit;
+}
+
+.table>tbody>tr>td {
+	padding: 10px, 10px, 10px, 10px;
+}
+
+
+
+.table>tbody>tr>td {
+	padding: 8px 8px 8px 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
+}
+
+footer {
+	bottom: 0;
+	padding: 2em 0;
+	text-align: center;
+	background-color: rgb(102, 140, 177);
+	color: #fff;
+	width: 100%;
+	clear: both;
+}
+</style>
+
+</head>
+
+<body>
+	<div id="app" class="container-fluid">
+		<header>
+
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary .navbar-inverse">
+				<a class="navbar-brand" href="#">Champion_Go</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><a class="nav-link" href="http://localhost:8080">首页</a></li>
+						<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/search.html">全部分类 <span class="sr-only">(current)</span>
+							</a></li>
+						<li class="nav-item"><a class="nav-link" href="http://localhost:8080/order.html">购物车 </a></li>
+						<li class="nav-item"><a class="nav-link" href="http://localhost:8080/user.html">个人中心 </a></li>
+
+					</ul>
+					<form class="form-inline my-2 my-lg-0 mx-3">
+						<input v-model="searchParam" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+						<button @click="searchAll()" class="btn btn-outline-success my-2 my-sm-0 width-50" type="button">搜索</button>
+					</form>
+
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<div class="tab-head">
+				<div class="ft">
+					<div class="container" style="width: 100% !important;">
+						<div class="row" style="display: block;">
+							<div class="tag-box">
+								<table class="table" style="margin-bottom: 10px">
+									<tbody>
+										<tr>
+
+											<td class="tag-span2">男装：</td>
+											<td class="tags">
+												<button type="button" @click="search('dxtx_0')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+												    autocomplete="off">短袖T恤</button>
+												<button type="button" @click="search('cxtx_0')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+												    autocomplete="off">长袖T恤</button>
+												<button type="button" @click="search('ydts_0')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+												    autocomplete="off">运动套衫</button>
+												<button type="button" @click="search('lmwy_0')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+												    autocomplete="off">连帽卫衣</button>
+												<button type="button" @click="search('wt_0')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+												    autocomplete="off">外套</button>
+												<button type="button" @click="search('dk_0')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+												    autocomplete="off">短裤</button>
+												<button type="button" @click="search('ck_0')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+												    autocomplete="off">长裤</button>
+											</td>
+										<tr style="border-bottom: 1px solid #DDD;">
+											<td class="tag-span2">女装：</td>
+											<td class="tags">
+												<div class="btn-group" role="group" aria-label="Basic example">
+													<button type="button" @click="search('dxtx_1')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+													    autocomplete="off">短袖T恤</button>
+													<button type="button" @click="search('cxtx_1')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+													    autocomplete="off">长袖T恤</button>
+													<button type="button" @click="search('ydts_1')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+													    autocomplete="off">运动套衫</button>
+													<button type="button" @click="search('lmwy_1')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+													    autocomplete="off">连帽卫衣</button>
+													<button type="button" @click="search('wt_1')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+													    autocomplete="off">外套</button>
+													<button type="button" @click="search('qz_1')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+													    autocomplete="off">裙子</button>
+													<button type="button" @click="search('lyq_1')" class="btn btn-sm tag" data-toggle="button" aria-pressed="false"
+													    autocomplete="off">连衣裙</button>
+												</div>
+											</td>
+
+										</tr>
+									</tbody>
+
+								</table>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid">
+
+				<div class="row">
+					
+					<div class="card" v-for="(prod, index) in prods" :key="index" style="width: 20%;">
+						<img class="card-img-top" :src="prod.prod_pic" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">{{prod.prod_name}}</h5>
+							<p class="card-text">{{prod.prod_note}}</p>
+							<h5 class="">¥&nbsp;{{prod.prod_price}}</h5>
+
+							<a class="btn btn-danger" @click="add(prod)"  role="button">添加至购物车</a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</main>
+		<!-- <footer>Copyright (c) 2018 404NOTFounD All Rights Reserved.</footer> -->
+	</div>
+	<script>
+		let userName = $.cookie("user");
+		let vm = new Vue({
+			el: "#app",
+			data: {
+				searchParam: '',
+				prods: [],
+				pic: []
+
+			},
+			mounted() {
+				axios.get('/getAllProduct')
+					.then((response) =>  {
+						this.prods = response.data;
+						console.log(prods);
+						console.log(prods[0].prod_name);
+					})
+					.catch(() => {
+
+					})
+			},
+			methods: {
+				search: function(tp){
+					$(".tag").removeClass('active');
+					axios.get('/search', {
+							params: {
+								"type": tp
+							}
+						})
+						.then((r) => {
+							this.prods = r.data;
+						})
+						.catch(() => {
+
+						})
+				},
+				searchAll:  function() {
+					console.log(this.searchParam);
+					axios.get('/searchAll', {
+							params: {
+								"key1": this.searchParam
+							}
+						})
+						.then((r) => {
+							this.prods = r.data;
+						})
+						.catch(() =>{
+
+						})
+				},
+				add: function(prod){
+					console.log(prod.prod_name);
+					axios.post("/addOrder", {
+						"user_name": userName,
+						"prod_name": prod.prod_name,
+						"quantity": 1,
+						"prod_price": prod.prod_price,
+					})
+					.then(() => {
+						console.log('添加购物车成功');
+						window.location='http://localhost:8080/order.html';
+					})
+					.finally(() => {
+					})
+				}
+			}
+		})
+	</script>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	    crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	    crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+	    crossorigin="anonymous"></script>
+</body>
+
+</html>

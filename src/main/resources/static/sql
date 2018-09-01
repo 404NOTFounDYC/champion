@@ -1,0 +1,35 @@
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('全球购Champion/冠军短袖T恤',189,'https://img13.360buyimg.com/n8/jfs/t18358/296/2710749358/267972/f0f37a18/5b06791fNff10d8dc.jpg','dxtx_0');
+
+
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('全球购Champion/冠军短袖T恤',149,'https://img14.360buyimg.com/n8/jfs/t16990/138/2629999408/129496/435dc6b2/5b0268b9N186a62e4.jpg','dxtx_0');
+
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('全球购Champion/冠军短袖T恤',199,'https://img10.360buyimg.com/n8/jfs/t21736/85/196314477/273791/dc412b05/5b026450N7102e5c9.jpg','dxtx_0');
+
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('全球购Champion/冠军短袖T恤',149,'https://img13.360buyimg.com/n8/jfs/t21913/6/600123638/144781/9f97e2f4/5b136245Nca635073.jpg','dxtx_0');
+
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('全球购Champion/冠军长袖T恤',189,'https://img11.360buyimg.com/n8/jfs/t20149/63/203468194/339860/32422805/5b026e83N8088e9c7.jpg','cxtx_0');
+
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('潮牌Champion / 冠军长袖T恤',149,'https://img11.360buyimg.com/n8/jfs/t20749/175/1075629963/322365/1f8ae97a/5b1f8aadN838f0fd2.jpg','cxtx_0');
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('潮牌Champion / 冠军短袖T恤',149,'https://img10.360buyimg.com/n8/jfs/t20008/111/630663302/273791/dc412b05/5b026e83N68958045.jpg','cxtx_0');
+
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('潮牌Champion / 运动长裤男',149,'https://img13.360buyimg.com/n8/jfs/t25453/325/835784642/144901/a02bca35/5b7cdc6aN5f8562e5.jpg','ck_0');
+
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('天猫国际Champion 运动长裤 ',149,'https://img10.360buyimg.com/n8/jfs/t20008/111/630663302/273791/dc412b05/5b026e83N68958045.jpg','ck_0');
+
+
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('潮牌Champion / 冠军连帽卫衣',137,'https://img10.360buyimg.com/n8/jfs/t23935/268/2366709898/106459/1304ea1f/5b7cfd04Nc1ce551b.jpg','lmwy_0');
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('全球购Champion / 冠军连帽卫衣',299,'https://img11.360buyimg.com/n8/jfs/t21025/246/235212325/251466/f96723c5/5b0653f1N7039571f.jpg','lmwy_0');
+insert into product(prod_name,prod_price,prod_pic,prod_type)
+values('潮牌Champion / 冠军短袖T恤',999,'https://img13.360buyimg.com/n8/jfs/t17788/297/429104313/154161/6e5003fb/5a755287N94928a81.jpg','cxtx_0');
+
